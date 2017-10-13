@@ -8,6 +8,7 @@ namespace Bank_Account
 {
     class Client
     {
+        //Fields:
         private string lastName;
         private string firstName;
         private int zipCode;
