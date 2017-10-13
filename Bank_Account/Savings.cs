@@ -35,17 +35,26 @@ namespace Bank_Account
             Console.WriteLine("Current balance: $" + AccountBalance);
         }
 
+        public override void DepositFunds()
+        {
+            Console.WriteLine("Enter deposit amount:");
+            double depositAmount = double.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Console.WriteLine("Amount to deposit: $" + depositAmount);
+            Console.WriteLine("New balance: $" + (accountBalance + depositAmount));
+        }
+
         public override void WithdrawFunds()
         {
-            double withdrawalAmount = double.Parse(Console.ReadLine());
             Console.WriteLine("Enter withdrawal amount:");
-            Console.WriteLine();
+            double withdrawalAmount;
             do
             {
-                Console.WriteLine("You wish to withdraw more than is available your account.\nPlease enter an amount that is less than your current balance.");
-
+            withdrawalAmount = double.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Console.WriteLine("You wish to withdraw more than is available your account.\nPlease enter an amount that is less than your current balance.");
             }
-            while (withdrawalAmount < AccountBalance);
+            while (withdrawalAmount > AccountBalance);
             Console.WriteLine("Amount to withdraw: $" + withdrawalAmount);
             Console.WriteLine("New balance: $" + (AccountBalance - withdrawalAmount));
 

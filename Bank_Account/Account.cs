@@ -9,9 +9,9 @@ namespace Bank_Account
     abstract class Account
     {
         //Fields:
-        private int accountNumber;
-        private double accountBalance;
-        private string accountType;
+        protected int accountNumber;
+        protected double accountBalance;
+        protected string accountType;
 
         //Properties:
         public int AccountNumber
@@ -42,8 +42,8 @@ namespace Bank_Account
 
         public virtual void DepositFunds()
         {
-            double depositAmount = double.Parse(Console.ReadLine());
             Console.WriteLine("Enter deposit amount:");
+            double depositAmount = double.Parse(Console.ReadLine());   
             Console.WriteLine();
             Console.WriteLine("Amount to deposit: $" + depositAmount);
             Console.WriteLine("New balance: $" + (accountBalance + depositAmount));
@@ -51,8 +51,8 @@ namespace Bank_Account
 
         public virtual void WithdrawFunds()
         {
-            double withdrawalAmount = double.Parse(Console.ReadLine());
             Console.WriteLine("Enter withdrawal amount:");
+            double withdrawalAmount = double.Parse(Console.ReadLine());
             Console.WriteLine();
             Console.WriteLine("Amount to withdraw: $" + withdrawalAmount);
             Console.WriteLine("New balance: $" + (accountBalance - withdrawalAmount));
