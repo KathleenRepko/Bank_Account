@@ -34,6 +34,11 @@ namespace Bank_Account
 
 
         //Constructor:
+        public Client()
+        {
+
+        }
+
         public Client(string lastName, string firstName, int zipCode)
         {
             this.lastName = lastName;
