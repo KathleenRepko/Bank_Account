@@ -11,6 +11,7 @@ namespace Bank_Account
         //Field:
         private double minimumBalance;
 
+
         //Property:
         public double MinimumBalance
         {
@@ -19,7 +20,12 @@ namespace Bank_Account
         }
 
 
-        //Constructor:
+        //Constructors:
+        public Savings()
+        {
+
+        }
+
         public Savings(int accountNumber, double accountBalance, string accountType, double minimumBalance)
         {
             this.AccountNumber = accountNumber;
@@ -32,33 +38,37 @@ namespace Bank_Account
         //Methods:
         public override void PrintBalance()
         {
-            Console.WriteLine("Current balance of savings account #" + accountNumber + ":\n$" + accountBalance);
+            Console.WriteLine("Current balance of savings account #" + accountNumber + ":\n$" + accountBalance.ToString("0.00"));
         }
 
         public override void DepositFunds()
         {
-            Console.WriteLine("Enter deposit amount:");
-            double depositAmount = double.Parse(Console.ReadLine());
-            Console.WriteLine();
-            Console.WriteLine("Amount to deposit to savings:\n$" + depositAmount.ToString("0.00"));
-            accountBalance = accountBalance + depositAmount;
+            base.DepositFunds();
             Console.WriteLine("New savings account balance:\n$" + accountBalance.ToString("0.00"));
         }
 
+        //Program should not allow user to withdraw funds if account balance will go below minimum balance.
         public override void WithdrawFunds()
         {
             Console.WriteLine("Enter withdrawal amount:");
             double withdrawalAmount;
+
             do
             {
-            withdrawalAmount = double.Parse(Console.ReadLine());
-            Console.WriteLine();
-            Console.WriteLine("You wish to withdraw more than is available your account.\nPlease enter an amount that is less than your current balance.\n");
-            }
-            while (withdrawalAmount > AccountBalance);
+                withdrawalAmount = double.Parse(Console.ReadLine());
+                Console.WriteLine();
+                if (withdrawalAmount > (accountBalance - minimumBalance))
+                {
+                    Console.WriteLine("This withdrawal will take you under your required minimum balance of $" + minimumBalance.ToString("0.00") + ".");
+                    Console.WriteLine("Please enter a withdrawal amount that is less than $" + ((accountBalance - minimumBalance) + 0.01).ToString("0.00") + ".\n");
+                }
+            } while (withdrawalAmount >= (accountBalance - minimumBalance));
+        
             Console.WriteLine("Amount to withdraw from savings:\n$" + withdrawalAmount.ToString("0.00"));
             accountBalance = accountBalance - withdrawalAmount;
             Console.WriteLine("New savings account balance:\n$" + accountBalance.ToString("0.00"));
         }
+
     }
+
 }

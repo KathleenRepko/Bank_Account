@@ -13,6 +13,7 @@ namespace Bank_Account
         private string firstName;
         private int zipCode;
 
+
         //Three Properties:
         public string LastName
         {
@@ -54,6 +55,6 @@ namespace Bank_Account
             Console.WriteLine("Zip Code: " + zipCode);
         }
         
-
     }
+
 }

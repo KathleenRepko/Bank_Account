@@ -13,6 +13,7 @@ namespace Bank_Account
         protected double accountBalance;
         protected string accountType;
 
+
         //Properties:
         public int AccountNumber
         {
@@ -47,7 +48,6 @@ namespace Bank_Account
             Console.WriteLine();
             Console.WriteLine("Amount to deposit:\n$" + depositAmount.ToString("0.00"));
             accountBalance = accountBalance + depositAmount;
-            Console.WriteLine("New balance:\n$" + accountBalance.ToString("0.00"));
         }
 
         public virtual void WithdrawFunds()
@@ -57,11 +57,8 @@ namespace Bank_Account
             Console.WriteLine();
             Console.WriteLine("Amount to withdraw:\n$" + withdrawalAmount.ToString("0.00"));
             accountBalance = accountBalance - withdrawalAmount;
-            Console.WriteLine("New balance:\n$" + accountBalance.ToString("0.00"));
         }
 
-
-
-
     }
+
 }

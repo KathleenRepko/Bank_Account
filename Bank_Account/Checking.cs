@@ -9,7 +9,6 @@ namespace Bank_Account
     class Checking : Account
     {
         //Constructors:
-
         public Checking()
         {
 
@@ -22,32 +21,27 @@ namespace Bank_Account
             this.AccountType = accountType;
         }
 
+
         //Methods:
         public override void PrintBalance()
         {
-            Console.WriteLine("Current balance of checking account #" + accountNumber + ":\n$" + accountBalance); 
+            Console.WriteLine("Current balance of checking account #" + accountNumber + ":\n$" + accountBalance.ToString("0.00")); 
         }
 
         public override void DepositFunds()
         {
-            Console.WriteLine("Enter deposit amount:");
-            double depositAmount = double.Parse(Console.ReadLine());
-            Console.WriteLine();
-            Console.WriteLine("Amount to deposit to checking:\n$" + depositAmount.ToString("0.00"));
-            accountBalance = accountBalance + depositAmount;
+            base.DepositFunds();
             Console.WriteLine("New checking account balance:\n$" + accountBalance.ToString("0.00"));
         }
 
         public override void WithdrawFunds()
         {
-            Console.WriteLine("Enter withdrawal amount:");
-            double withdrawalAmount = double.Parse(Console.ReadLine());
-            Console.WriteLine();
-            Console.WriteLine("Amount to withdraw from checking:\n$" + withdrawalAmount.ToString("0.00"));
-            accountBalance = accountBalance - withdrawalAmount;
+            base.WithdrawFunds();
             Console.WriteLine("New checking balance:\n$" + accountBalance.ToString("0.00"));
+            if (accountBalance < 0)
+                Console.WriteLine("YOUR ACCOUNT IS OVERDRAWN!");
         }
 
-
     }
+
 }
