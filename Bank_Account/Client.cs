@@ -33,7 +33,7 @@ namespace Bank_Account
         }
 
 
-        //Constructor:
+        //Constructors:
         public Client()
         {
 

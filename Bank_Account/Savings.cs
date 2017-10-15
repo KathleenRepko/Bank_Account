@@ -32,7 +32,7 @@ namespace Bank_Account
         //Methods:
         public override void PrintBalance()
         {
-            Console.WriteLine("Current balance: $" + AccountBalance);
+            Console.WriteLine("Current balance of savings account #" + accountNumber + ":\n$" + accountBalance);
         }
 
         public override void DepositFunds()
@@ -40,8 +40,9 @@ namespace Bank_Account
             Console.WriteLine("Enter deposit amount:");
             double depositAmount = double.Parse(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine("Amount to deposit: $" + depositAmount);
-            Console.WriteLine("New balance: $" + (accountBalance + depositAmount));
+            Console.WriteLine("Amount to deposit to savings:\n$" + depositAmount.ToString("0.00"));
+            accountBalance = accountBalance + depositAmount;
+            Console.WriteLine("New savings account balance:\n$" + accountBalance.ToString("0.00"));
         }
 
         public override void WithdrawFunds()
@@ -52,13 +53,12 @@ namespace Bank_Account
             {
             withdrawalAmount = double.Parse(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine("You wish to withdraw more than is available your account.\nPlease enter an amount that is less than your current balance.");
+            Console.WriteLine("You wish to withdraw more than is available your account.\nPlease enter an amount that is less than your current balance.\n");
             }
             while (withdrawalAmount > AccountBalance);
-            Console.WriteLine("Amount to withdraw: $" + withdrawalAmount);
-            Console.WriteLine("New balance: $" + (AccountBalance - withdrawalAmount));
-
-
+            Console.WriteLine("Amount to withdraw from savings:\n$" + withdrawalAmount.ToString("0.00"));
+            accountBalance = accountBalance - withdrawalAmount;
+            Console.WriteLine("New savings account balance:\n$" + accountBalance.ToString("0.00"));
         }
     }
 }

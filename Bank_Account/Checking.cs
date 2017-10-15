@@ -8,7 +8,7 @@ namespace Bank_Account
 {
     class Checking : Account
     {
-        //Constructor:
+        //Constructors:
 
         public Checking()
         {
@@ -22,9 +22,10 @@ namespace Bank_Account
             this.AccountType = accountType;
         }
 
+        //Methods:
         public override void PrintBalance()
         {
-            Console.WriteLine("Current checking balance: $" + AccountBalance); 
+            Console.WriteLine("Current balance of checking account #" + accountNumber + ":\n$" + accountBalance); 
         }
 
         public override void DepositFunds()
@@ -32,8 +33,9 @@ namespace Bank_Account
             Console.WriteLine("Enter deposit amount:");
             double depositAmount = double.Parse(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine("Amount to deposit: $" + depositAmount);
-            Console.WriteLine("New balance: $" + (accountBalance + depositAmount));
+            Console.WriteLine("Amount to deposit to checking:\n$" + depositAmount.ToString("0.00"));
+            accountBalance = accountBalance + depositAmount;
+            Console.WriteLine("New checking account balance:\n$" + accountBalance.ToString("0.00"));
         }
 
         public override void WithdrawFunds()
@@ -41,8 +43,9 @@ namespace Bank_Account
             Console.WriteLine("Enter withdrawal amount:");
             double withdrawalAmount = double.Parse(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine("Amount to withdraw: $" + withdrawalAmount);
-            Console.WriteLine("New balance: $" + (accountBalance - withdrawalAmount));
+            Console.WriteLine("Amount to withdraw from checking:\n$" + withdrawalAmount.ToString("0.00"));
+            accountBalance = accountBalance - withdrawalAmount;
+            Console.WriteLine("New checking balance:\n$" + accountBalance.ToString("0.00"));
         }
 
 

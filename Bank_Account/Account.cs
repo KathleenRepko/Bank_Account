@@ -45,8 +45,9 @@ namespace Bank_Account
             Console.WriteLine("Enter deposit amount:");
             double depositAmount = double.Parse(Console.ReadLine());   
             Console.WriteLine();
-            Console.WriteLine("Amount to deposit: $" + depositAmount);
-            Console.WriteLine("New balance: $" + (accountBalance + depositAmount));
+            Console.WriteLine("Amount to deposit:\n$" + depositAmount.ToString("0.00"));
+            accountBalance = accountBalance + depositAmount;
+            Console.WriteLine("New balance:\n$" + accountBalance.ToString("0.00"));
         }
 
         public virtual void WithdrawFunds()
@@ -54,8 +55,9 @@ namespace Bank_Account
             Console.WriteLine("Enter withdrawal amount:");
             double withdrawalAmount = double.Parse(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine("Amount to withdraw: $" + withdrawalAmount);
-            Console.WriteLine("New balance: $" + (accountBalance - withdrawalAmount));
+            Console.WriteLine("Amount to withdraw:\n$" + withdrawalAmount.ToString("0.00"));
+            accountBalance = accountBalance - withdrawalAmount;
+            Console.WriteLine("New balance:\n$" + accountBalance.ToString("0.00"));
         }
 
 
